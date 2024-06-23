@@ -1,14 +1,8 @@
 <script lang="ts" setup>
-interface Todo {
-  id: number;
-  text: string;
-  done: boolean;
-}
-
-const emits = defineEmits(["toggle"]);
+const emits = defineEmits(["toggle", "delete"]);
 
 const props = defineProps<{
-  todo: Todo;
+  todo: TodoItem;
 }>();
 </script>
 <template>
@@ -17,14 +11,27 @@ const props = defineProps<{
       :model-value="props.todo.done"
       type="checkbox"
       :checked="props.todo.done"
-      @click="emits('toggle')"
+      @change="emits('toggle')"
     />
     <span
       :style="{ textDecoration: props.todo.done ? 'line-through' : 'none' }"
     >
       {{ todo.text }}
     </span>
+    <button class="delete-btn" alt="Delete Item" @click="emits('delete')">
+      X
+    </button>
   </div>
 </template>
 
-<style></style>
+<style lang="scss" scoped>
+input {
+  margin-right: 8px;
+}
+
+.delete-btn {
+  margin-left: 8px;
+  background-color: unset;
+  border: none;
+}
+</style>
