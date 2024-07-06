@@ -12,8 +12,10 @@
     "typecheck": "nuxt typecheck"
   },
   "dependencies": {
+    "@lucia-auth/adapter-sqlite": "^3.0.2",
     "@nuxt/eslint": "^0.3.13",
     "@nuxthub/core": "^0.6.15",
+    "lucia": "^3.2.0",
     "nuxt": "^3.12.1"
   },
   "devDependencies": {
